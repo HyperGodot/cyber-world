@@ -1,0 +1,231 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://player/models/tumble/default.tres" type="Animation" id=4]
+[ext_resource path="res://player/models/tumble/walk-diagonal-left-back-loop.tres" type="Animation" id=5]
+[ext_resource path="res://player/models/tumble/run-loop.tres" type="Animation" id=6]
+[ext_resource path="res://player/models/tumble/strafe-left-loop.tres" type="Animation" id=7]
+[ext_resource path="res://player/models/tumble/walk-backward-loop.tres" type="Animation" id=8]
+[ext_resource path="res://player/models/tumble/dive-roll.tres" type="Animation" id=9]
+[ext_resource path="res://player/models/tumble/walk-diagonal-right-back-loop.tres" type="Animation" id=10]
+[ext_resource path="res://player/models/tumble/walk-diagonal-right-loop.tres" type="Animation" id=11]
+[ext_resource path="res://player/models/tumble/walk-forward-loop.tres" type="Animation" id=12]
+[ext_resource path="res://player/models/tumble/walk-diagonal-left-loop.tres" type="Animation" id=13]
+[ext_resource path="res://player/models/tumble/idle-loop.tres" type="Animation" id=14]
+[ext_resource path="res://player/models/tumble/jump-loop.tres" type="Animation" id=15]
+[ext_resource path="res://player/models/tumble/strafe-right-loop.tres" type="Animation" id=16]
+[ext_resource path="res://player/models/tumble/sprint-2-loop.tres" type="Animation" id=17]
+[ext_resource path="res://player/models/tumble_asset.tscn" type="PackedScene" id=19]
+[ext_resource path="res://player/camera.gd" type="Script" id=20]
+[ext_resource path="res://player/player.gd" type="Script" id=21]
+[ext_resource path="res://special_input.gd" type="Script" id=22]
+
+[sub_resource type="CylinderShape" id=35]
+height = 1.85945
+
+[sub_resource type="CylinderShape" id=34]
+radius = 0.40216
+
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=26]
+animation = "walk-forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "run-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=27]
+animation = "roll"
+
+[sub_resource type="AnimationNodeTimeScale" id=22]
+
+[sub_resource type="AnimationNodeTransition" id=29]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "aiming"
+input_0/auto_advance = false
+input_1/name = "not_aiming"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlend3" id=28]
+
+[sub_resource type="AnimationNodeOneShot" id=30]
+
+[sub_resource type="AnimationNodeTimeScale" id=31]
+
+[sub_resource type="AnimationNodeTimeScale" id=33]
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk-forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "strafe-right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk-diagonal-right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "walk-diagonal-left-back-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "walk-backward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "walk-diagonal-right-back-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "strafe-left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "walk-diagonal-left-loop"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 1, 1.01 )
+blend_point_4/node = SubResource( 15 )
+blend_point_4/pos = Vector2( 1, -1 )
+blend_point_5/node = SubResource( 16 )
+blend_point_5/pos = Vector2( 0, -1 )
+blend_point_6/node = SubResource( 17 )
+blend_point_6/pos = Vector2( -1, -1 )
+blend_point_7/node = SubResource( 18 )
+blend_point_7/pos = Vector2( -1, 0 )
+blend_point_8/node = SubResource( 19 )
+blend_point_8/pos = Vector2( -1, 1.01 )
+max_space = Vector2( 1.01, 1 )
+
+[sub_resource type="AnimationNodeTimeScale" id=23]
+
+[sub_resource type="AnimationNodeBlendTree" id=32]
+graph_offset = Vector2( -1221.5, 32.8344 )
+nodes/Animation/node = SubResource( 27 )
+nodes/Animation/position = Vector2( -260, 380 )
+"nodes/Animation 2/node" = SubResource( 25 )
+"nodes/Animation 2/position" = Vector2( -640, 240 )
+"nodes/Animation 3/node" = SubResource( 26 )
+"nodes/Animation 3/position" = Vector2( -880, 380 )
+"nodes/Animation 4/node" = SubResource( 10 )
+"nodes/Animation 4/position" = Vector2( -840, 500 )
+"nodes/TimeScale 3/node" = SubResource( 22 )
+"nodes/TimeScale 3/position" = Vector2( -480, 80 )
+nodes/aim_transition/node = SubResource( 29 )
+nodes/aim_transition/position = Vector2( -180, 100 )
+nodes/iwr_blend/node = SubResource( 28 )
+nodes/iwr_blend/position = Vector2( -400, 200 )
+nodes/roll/node = SubResource( 30 )
+nodes/roll/position = Vector2( 120, 160 )
+nodes/roll_scale/node = SubResource( 31 )
+nodes/roll_scale/position = Vector2( -100, 340 )
+nodes/run_scale/node = SubResource( 33 )
+nodes/run_scale/position = Vector2( -640, 500 )
+nodes/strafe/node = SubResource( 20 )
+nodes/strafe/position = Vector2( -760, 60 )
+nodes/walk_scale/node = SubResource( 23 )
+nodes/walk_scale/position = Vector2( -640, 360 )
+node_connections = [ "output", 0, "roll", "roll", 0, "aim_transition", "roll", 1, "roll_scale", "aim_transition", 0, "TimeScale 3", "aim_transition", 1, "iwr_blend", "TimeScale 3", 0, "strafe", "roll_scale", 0, "Animation", "iwr_blend", 0, "Animation 2", "iwr_blend", 1, "walk_scale", "iwr_blend", 2, "run_scale", "walk_scale", 0, "Animation 3", "run_scale", 0, "Animation 4" ]
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.487793, 0, 0, 0, 0.848323, 0, 0, 0, 0.248034, 0, 0.766519, 0 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766839, -0.137323 )
+visible = false
+shape = SubResource( 34 )
+disabled = true
+
+[node name="Mesh" type="Spatial" parent="."]
+
+[node name="cloth_char" parent="Mesh" instance=ExtResource( 19 )]
+transform = Transform( 0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0 )
+
+[node name="Camroot" type="Spatial" parent="."]
+script = ExtResource( 20 )
+
+[node name="h" type="Spatial" parent="Camroot"]
+
+[node name="v" type="Spatial" parent="Camroot/h"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41498, 0 )
+
+[node name="Camera" type="ClippedCamera" parent="Camroot/h/v"]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4.03244e-07, 0, -2.67056 )
+current = true
+far = 200.0
+process_mode = 1
+
+[node name="mouse_control_stay_delay" type="Timer" parent="Camroot"]
+one_shot = true
+
+[node name="CamFollow" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57079, 0 )
+visible = false
+
+[node name="Camera" type="ClippedCamera" parent="CamFollow"]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 0, -1.98246 )
+process_mode = 1
+
+[node name="roll_window" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+one_shot = true
+__meta__ = {
+"_editor_description_": "This Timer ensures \"Tap to roll\"
+Releasing key within this time executes roll"
+}
+
+[node name="roll_timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Mesh/cloth_char")
+anims/default = ExtResource( 4 )
+anims/idle-loop = ExtResource( 14 )
+anims/jump-loop = ExtResource( 15 )
+anims/roll = ExtResource( 9 )
+anims/run-loop = ExtResource( 6 )
+anims/sprint-2 = ExtResource( 17 )
+anims/strafe-left-loop = ExtResource( 7 )
+anims/strafe-right-loop = ExtResource( 16 )
+anims/walk-backward-loop = ExtResource( 8 )
+anims/walk-diagonal-left-back-loop = ExtResource( 5 )
+anims/walk-diagonal-left-loop = ExtResource( 13 )
+anims/walk-diagonal-right-back-loop = ExtResource( 10 )
+anims/walk-diagonal-right-loop = ExtResource( 11 )
+anims/walk-forward-loop = ExtResource( 12 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 32 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+"parameters/TimeScale 3/scale" = 1.0
+parameters/aim_transition/current = 0
+parameters/iwr_blend/blend_amount = -1.0
+parameters/roll/active = false
+parameters/roll_scale/scale = 1.0
+parameters/run_scale/scale = 1.0
+parameters/strafe/blend_position = Vector2( 0.000221848, 0.0517242 )
+parameters/walk_scale/scale = 1.0
+
+[node name="Special Input" type="Node" parent="."]
+script = ExtResource( 22 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88945, 0 )
+visible = false
